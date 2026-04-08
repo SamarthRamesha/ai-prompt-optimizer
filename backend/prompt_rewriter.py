@@ -28,7 +28,7 @@ def detect_type(prompt):
         return "general"
 
 def clean_input(prompt):
-    return prompt.strip().capitalize()
+    return prompt.strip()
 
 def rewrite_prompt(user_input):
     prompt_type = detect_type(user_input)
