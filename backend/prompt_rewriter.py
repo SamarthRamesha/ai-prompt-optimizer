@@ -32,25 +32,29 @@ def clean_input(prompt):
 
 def rewrite_prompt(user_input):
     prompt_type = detect_type(user_input)
+
     if prompt_type == "technical":
         role = "Senior Software Developer"
         context = "User has basic programming knowledge"
         output = "Step-by-step explanation with code examples"
+
     elif prompt_type == "writing":
         role = "Professional Writer"
         context = "Focus on clarity, tone, and structure"
         output = "Well-structured paragraphs"
+
     else:
         role = "Subject Matter Expert"
         context = "Explain in simple terms for a beginner"
         output = "Clear bullet points"
-    return f"""
-        Role: {role}
-        Task: {user_input}
-        Context: {context}
-        Constraints: Keep it concise and easy to understand
-        Output Format: {output}
-    """
+
+    return {
+        "role": role,
+        "task": user_input,
+        "context": context,
+        "constraints": "Keep it concise and easy to understand",
+        "output_format": output
+    }
 
 if __name__ == "__main__":
     while True:
